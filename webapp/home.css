@@ -30,8 +30,8 @@ h1{
   
 }
 .align-right{
-    /* text-align: right;
-    margin-left: -20%; */
+    text-align: right;
+    margin-left: -20%;
 }
 #your-email{
     padding-right: 85%;
