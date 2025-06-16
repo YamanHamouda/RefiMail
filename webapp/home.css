@@ -8,21 +8,46 @@ h1{
 }
 
 .form{
-    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 5%;
     text-align: center;
+    width: fit-content;      /* or whatever size you want */
+    margin: 0 auto;       /* center it horizontally */
+    padding: 2%;
+    /* border: 1px solid #ccc; */
+    border-radius: 8px;
+    /* background-color: #fff; */
 }
 
 #email{
   font-family: 'Arial', sans-serif;   /* or any font you like */
   font-weight: bolder;
   color: #021139;                        /* darker text color */
-  background-color: #fff;   
+  /* background-color: #fff;    */
+  /* border-radius: 2%; */
+  
 }
+.align-right{
+    /* text-align: right;
+    margin-left: -20%; */
+}
+#your-email{
+    padding-right: 85%;
+    margin-bottom: -5.5%;
+}
+#submit{
+    border-radius: 50%;
+    width: 18%;
+    font-size: x-large;
+    background-color: white;
+    
+}
+
 textarea {
   width: 100%;
   max-width: 600px;
-  height: 200px;
   resize: vertical; /* lets user resize up/down */
-  padding: 10px;
   font-size: 16px;
 }
