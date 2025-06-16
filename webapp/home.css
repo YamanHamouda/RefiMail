@@ -8,6 +8,7 @@ h1{
 }
 
 .form{
+    
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -37,17 +38,27 @@ h1{
     padding-right: 85%;
     margin-bottom: -5.5%;
 }
-#submit{
-    border-radius: 50%;
-    width: 18%;
-    font-size: x-large;
-    background-color: white;
-    
-}
-
 textarea {
   width: 100%;
   max-width: 600px;
   resize: vertical; /* lets user resize up/down */
   font-size: 16px;
+}
+
+form div button{
+
+  background-color: #95a6df; /* <– this is the circle color */
+  color: rgb(28, 25, 82);              /* text color */
+  padding: 10px 20px;        /* spacing around text */
+  border: none;
+  border-radius: 999px;      /* makes it an oval/circle shape */
+  font-size: 18px;
+  cursor: pointer;  
+}
+form div button:hover{
+    background-color: #465fa6;
+}
+
+form div button:active{
+     background-color: #2e51b0;
 }

@@ -8,7 +8,7 @@ const get_email = (event) =>
 
     console.log(email);
 
-    alert("email submitted:" + email);
+    alert("email submitted: " + email);
 }
 
 form.addEventListener('submit',get_email);
