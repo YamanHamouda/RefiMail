@@ -1,0 +1,28 @@
+head,body{
+    background-color: lightblue;
+}
+
+h1{
+    text-align: center;
+    color: rgb(50, 78, 87)
+}
+
+.form{
+    padding-top: 10%;
+    text-align: center;
+}
+
+#email{
+  font-family: 'Arial', sans-serif;   /* or any font you like */
+  font-weight: bolder;
+  color: #021139;                        /* darker text color */
+  background-color: #fff;   
+}
+textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  resize: vertical; /* lets user resize up/down */
+  padding: 10px;
+  font-size: 16px;
+}
