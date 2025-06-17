@@ -4,7 +4,13 @@ const main = (event) =>
 {
     event.preventDefault();
     email = document.getElementById('email').value;
-    console.log(email);
+    const length = email.length;
+    console.log("works " + length);
+    if (length> 1500)
+    {
+        alert("Email exceeds character limit of 1000 characters, current length: " + length);
+        return;
+    }
 
     call_fetch();
 }
@@ -27,6 +33,7 @@ fetch('http://localhost:5000/api/home',
 
 const use_data = (data) =>
 {
+   
     console.log('Success: ', data);
     alert(data.new_email);
 }
