@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_cors import CORS
 from S3_input import send_email
 app = Flask(__name__)
@@ -10,7 +10,7 @@ def handle_submit():
     email = data.get('email')
     print("Recieved email: ", email)
     send_email(email)
-    return jsonify({"new_email" : email + "\n Thank you."})\
+    return "processing..."
 
 if __name__ == "__main__":
     app.run(debug=True)

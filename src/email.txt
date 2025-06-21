@@ -1,1 +1,8 @@
-forgot to close the file
+enticing
+Hi Professor Li, my name is MHD Yaman Hamouda. I'm emailing you today to ask if you're looking for any undergraduate students for research positions for the Spring quarter. I understand you likely get many emails like this, so there might not be an open spot at the moment, but if things change later in the summer or fall, I'd be happy to join in on the research.
+
+Here's a little about me:
+I am an Honors-to-Honors Computer Science transfer from Irvine Valley College (IVC), but currently I'm not in UCI's Collegewide Honors Collegium. I've had a good amount of experience with research at IVC through the honors classes and other classes, and I've held a 4.0 GPA in both IVC and UCI so far. Currently I'm a junior, taking relevant classes like COMPSCI 122A and will be taking COMPSCI 122B in the Spring, which I believe will be useful for this research position. If there's anything else you'd like to know or need from me, let me know and I will respond.
+
+Best Regards,
+MHD Yaman Hamouda
