@@ -1,12 +1,12 @@
 import boto3
 def _string_to_file(email):
-    file = open("email.txt", "w")
+    file = open("src/email.txt", "w")
     file.write(email)
     file.close()
     return file
 
 def _test_file():
-    file = open("email.txt", "r")
+    file = open("src/email.txt", "r")
     print("this should have the full email")
     print(file.read())
     file.close()
@@ -17,6 +17,5 @@ def send_email(email):
     s3 = boto3.client('s3')
     file = _string_to_file(email)
     #_test_file()
-    s3.upload_file("email.txt",bucket,"email.txt")
-
+    s3.upload_file("src/email.txt",bucket,"email.txt")
     print("Email uploaded successfully")

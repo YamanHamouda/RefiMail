@@ -2,10 +2,10 @@ import boto3
 from botocore.exceptions import ClientError
 
 from flask_cors import CORS
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import time
 
-print(__name__)
+
 app = Flask(__name__)
 CORS(app)
 
@@ -13,12 +13,14 @@ CORS(app)
 def get_refined_email():
    email = get_email()
    print(email)
+   
+   return jsonify({ "new_email": email })
     
 
 
 def get_email():
     while(True):
-        time.sleep(100)
+        time.sleep(0.1)
         try:
             s3 = boto3.client("s3")
             bucket = "yaman-hamouda-aws-lambda-hackathon-output"
@@ -29,13 +31,10 @@ def get_email():
             new_email = file.read().decode('utf-8')
             return new_email
         except ClientError as e:
-            if e.responsep['Error']['Code'] == "NoSuchKey":
+            if e.response['Error']['Code'] == "NoSuchKey":
                 print("File Not Found yet")
             else:
                 raise e
-
-
-
 
 
 if __name__ == "__main__":

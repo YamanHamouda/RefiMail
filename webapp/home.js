@@ -1,48 +1,97 @@
 const form = document.getElementById('form')
+const output_button = document.getElementById('checkOutput')
 let email;
+let new_email;
+let first_fetch_success = false;
 const main = (event) => 
 {
     event.preventDefault();
     email = document.getElementById('email').value;
     const length = email.length;
-    console.log("works " + length);
-    if (length> 1500)
+    console.log("email length: " + length);
+    if (length > 1500)
     {
         alert("Email exceeds character limit of 1000 characters, current length: " + length);
         return;
     }
 
     call_fetch();
+
 }
 
-form.addEventListener('submit',main);
 
-const call_fetch = () =>
+const extract_new_email = (event) =>
 {
-fetch('http://localhost:5000/api/home',
-            {
+    event.preventDefault();
+    if (!first_fetch_success)
+    {
+        console.log("not ready yet");
+        return;
+    }
+    fetch('http://127.0.0.1:5000/api/output',
+        {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({email: email})
-            }
-        )
+        }
+    )
     .then(jsonify)
-    .then(use_data)
+    .then(handle_new_email)
     .catch(handle_fetch_error);
 }
 
-const use_data = (data) =>
+form.addEventListener('submit',main);
+output_button.addEventListener('click',extract_new_email)
+
+
+const call_fetch = () =>
 {
-   
-    console.log('Success: ', data);
-    alert(data.new_email);
+    console.log(email);
+    console.log("calling fetch");
+    fetch('http://127.0.0.1:5000/api/main-input',
+                {
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({email: ("enticing\n" + email)}) ///// <--- here change enticing with dropdown variable name
+                }
+            )
+        .then(isOk)
+        .then(response =>{ 
+            console.log("/api/main-input finished");
+            first_fetch_success=true;})
+        .catch(handle_fetch_error);
+}
+
+
+
+const handle_new_email = (json_email) =>
+{
+    console.log("handling email");
+    new_email = json_email.new_email;
+    console.log(new_email);
+    alert(new_email);
+    console.log("email handled");
 }
 
 const jsonify = (response) =>
 {
+   isOk(response);
+   const json_response = response.json();
+   console.log("jsonified");
+   return json_response;
+   
+}
+
+
+const isOk = (response) =>
+{
+    console.log("verifying reponse...");
     if (!response.ok) 
-        throw new Error("Something went wrong: " + response.status);
-    return response.json();
+    {
+        console.log("verify failed...");
+    }
+      
+    console.log("response verified");
+    return response;
 }
 
 const handle_fetch_error = (error) =>
