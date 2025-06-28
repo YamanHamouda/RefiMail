@@ -28,6 +28,7 @@ const extract_new_email = (event) =>
         console.log("not ready yet");
         return;
     }
+    console.log("calling 2nd fetch");
     fetch('http://127.0.0.1:5000/api/output',
         {
             method: 'POST',
