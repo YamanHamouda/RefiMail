@@ -10,5 +10,5 @@ def handle_submit():
     data = request.json
     email = data.get('email')
     send_email(email)
-    print("email sent succcessfully")
+    print("email sent succcessfully", email)
     return jsonify({"status": "success"})

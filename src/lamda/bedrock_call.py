@@ -1,5 +1,4 @@
 #THIS FILE ISN'T ACTUALLY BEING RUN ANYWHERE INT HE REPO, BUT RATHER IT'S BEING RUN ON THE LAMDA INSTANCE
-import json
 import boto3
 
 def lambda_handler(event, context):

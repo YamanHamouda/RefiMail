@@ -2,14 +2,14 @@ import boto3
 from botocore.exceptions import ClientError
 
 from flask_cors import CORS
-from flask import Flask, request, jsonify
+from flask import jsonify, Blueprint
 import time
 
 
-app = Flask(__name__)
-CORS(app)
+bp = Blueprint("S3_output",__name__)
+CORS(bp)
 
-@app.route("/api/output", methods=["POST"])
+@bp.route("/api/output", methods=["POST"])
 def get_refined_email():
    email = get_email()
    print(email)
@@ -19,7 +19,7 @@ def get_refined_email():
 
 
 def get_email():
-    while(True):
+    for i in range(30):
         time.sleep(0.1)
         try:
             s3 = boto3.client("s3")
@@ -38,4 +38,4 @@ def get_email():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    bp.run(debug=True)

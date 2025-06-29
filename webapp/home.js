@@ -14,7 +14,7 @@ const main = (event) =>
         alert("Email exceeds character limit of 1000 characters, current length: " + length);
         return;
     }
-
+    
     call_fetch();
 
 }
@@ -46,16 +46,18 @@ output_button.addEventListener('click',extract_new_email)
 
 const call_fetch = () =>
 {
-    console.log(email);
+    const tone =  document.getElementById("tone").value;
+    console.log("the tone is " + tone + "\n" + email);
     console.log("calling fetch");
     fetch('http://127.0.0.1:5000/api/main-input',
                 {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body: JSON.stringify({email: ("enticing\n" + email)}) ///// <--- here change enticing with dropdown variable name
+                body: JSON.stringify({email: (tone + "\n" + email)}) ///// <--- here change enticing with dropdown variable name
                 }
             )
         .then(isOk)
+        .then(res => res.json())
         .then(response =>{ 
             console.log("/api/main-input finished");
             first_fetch_success=true;})
@@ -89,6 +91,7 @@ const isOk = (response) =>
     if (!response.ok) 
     {
         console.log("verify failed...");
+        throw new Error(`HTTP error status ${resonse.status}`)
     }
       
     console.log("response verified");
