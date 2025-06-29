@@ -48,7 +48,7 @@ const call_fetch = () =>
 {
     const tone =  document.getElementById("tone").value;
     console.log("the tone is " + tone + "\n" + email);
-    console.log("calling fetch");
+    console.log("calling fetch");   
     fetch('http://127.0.0.1:5000/api/main-input',
                 {
                 method: 'POST',
