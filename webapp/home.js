@@ -3,6 +3,7 @@ const output_button = document.getElementById('checkOutput')
 let email;
 let new_email;
 let first_fetch_success = false;
+let uuid;
 const main = (event) => 
 {
     event.preventDefault();
@@ -33,6 +34,7 @@ const extract_new_email = (event) =>
         {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({ uuid : uuid})
         }
     )
     .then(jsonify)
@@ -53,14 +55,17 @@ const call_fetch = () =>
                 {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body: JSON.stringify({email: (tone + "\n" + email)}) ///// <--- here change enticing with dropdown variable name
+                body: JSON.stringify({
+                    email: (`${tone}\n${email}`)
+                    })
                 }
             )
-        .then(isOk)
-        .then(res => res.json())
+        .then(jsonify)
         .then(response =>{ 
             console.log("/api/main-input finished");
-            first_fetch_success=true;})
+            first_fetch_success=true;
+            uuid = response.id;
+        })
         .catch(handle_fetch_error);
 }
 
@@ -91,7 +96,7 @@ const isOk = (response) =>
     if (!response.ok) 
     {
         console.log("verify failed...");
-        throw new Error(`HTTP error status ${resonse.status}`)
+        throw new Error(`HTTP error status ${response.status}`)
     }
       
     console.log("response verified");

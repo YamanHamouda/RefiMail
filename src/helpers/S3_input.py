@@ -12,10 +12,10 @@ def _test_file():
     file.close()
 
 #yaman-hamouda-aws-lambda-hackathon-input
-def send_email(email):
+def send_email(email,id):
     bucket = "yaman-hamouda-aws-lambda-hackathon-input"
     s3 = boto3.client('s3')
     file = _string_to_file(email)
     #_test_file()
-    s3.upload_file("src/email.txt",bucket,"email.txt")
+    s3.upload_file("src/email.txt",bucket,f"input_email{id}.txt")
     print("Email uploaded successfully")
