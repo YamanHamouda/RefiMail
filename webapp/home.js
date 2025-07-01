@@ -17,7 +17,6 @@ const main = (event) =>
     }
     
     call_fetch();
-
 }
 
 
