@@ -21,12 +21,11 @@ def get_refined_email():
 
 
 def get_email(id):
+    s3 = boto3.client("s3")
+    bucket = "yaman-hamouda-aws-lambda-hackathon-output"
+    key = f"output_email{id}.txt"
     for i in range(30):
         try:
-            s3 = boto3.client("s3")
-            bucket = "yaman-hamouda-aws-lambda-hackathon-output"
-            key = f"output_email{id}.txt"
-
             s3_object = s3.get_object(Bucket=bucket, Key=key)
             file = s3_object['Body']
             new_email = file.read().decode('utf-8')
@@ -36,6 +35,7 @@ def get_email(id):
                 print("File Not Found yet")
             else:
                 raise e
+        time.sleep(0.1)
 
 
 if __name__ == "__main__":

@@ -15,7 +15,8 @@ def _test_file():
 def send_email(email,id):
     bucket = "yaman-hamouda-aws-lambda-hackathon-input"
     s3 = boto3.client('s3')
-    file = _string_to_file(email)
+    # file = _string_to_file(email)
     #_test_file()
-    s3.upload_file("src/email.txt",bucket,f"input_email{id}.txt")
+    s3.put_object(Body=email,Bucket = bucket, Key = f"input_email{id}.txt")
+    # s3.upload_file("src/email.txt",bucket,f"input_email{id}.txt")
     print("Email uploaded successfully")
