@@ -17,7 +17,7 @@ Paste your rough email draft into Refimail, choose a tone that fits your message
 - **Cloud Services**:
   - AWS S3 for storing email input and output
   - AWS Lambda to process and rewrite messages
-  - Amazon Bedrock to apply tone adjustments using a foundation model
+  - Amazon Bedrock to apply tone adjustments using a anthropic claude
 
 ---
 
@@ -31,4 +31,3 @@ Paste your rough email draft into Refimail, choose a tone that fits your message
 6. The rewritten message is saved in an output S3 bucket.
 7. The email is extracted from the S3 bucket in the Python backend and sent to the front end
 8. Then the new refined email is displayed for the user.
-
